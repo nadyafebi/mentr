@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService, UserService } from '../../services';
-import { Course, Mentor, User } from '../../schemas';
+import { Course, Match, Mentor, User } from '../../schemas';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -16,6 +16,7 @@ export class FindPageComponent implements OnInit {
   courses$: Observable<Course[]>;
   pickedCourse: string;
   mentors$: Observable<Mentor[]>;
+  menteeMatches$: Observable<Match[]>;
 
   constructor(
     private dataService: DataService,
@@ -25,6 +26,7 @@ export class FindPageComponent implements OnInit {
   ngOnInit() {
     this.user$ = this.userService.getUser$();
     this.courses$ = this.dataService.getCourses$();
+    this.menteeMatches$ = this.dataService.findMenteeMatches$(this.userService.getUserId());
   }
 
   pickCourse(id: string) {
@@ -34,5 +36,9 @@ export class FindPageComponent implements OnInit {
 
   async matchMentor(userId: string, mentorId: string) {
     await this.dataService.createMatch(userId, mentorId, this.pickedCourse);
+  }
+
+  async acceptMatch(matchId: string) {
+    await this.dataService.acceptMatch(matchId);
   }
 }

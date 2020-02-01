@@ -1,4 +1,6 @@
 <ng-container *ngIf="user$ | async as user">
+    Hello {{ user.name }}!
+
     Pick class:
     
     <button
@@ -21,6 +23,18 @@
                     {{ mentor.name }}
                 </button>
             </ng-container>
+        </ng-container>
+    </ng-container>
+
+    Pick mentee:
+    <ng-container *ngFor="let match of menteeMatches$ | async">
+        <ng-container *ngIf="(match.mentee | firedoc:'users' | async) as mentee">
+            <button
+                (click)="acceptMatch(match.id)"
+                mat-raised-button
+            >
+                {{ mentee.name }}
+            </button>
         </ng-container>
     </ng-container>
 </ng-container>

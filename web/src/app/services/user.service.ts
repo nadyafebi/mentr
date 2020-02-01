@@ -64,6 +64,10 @@ export class UserService implements OnDestroy {
     return this.user$.asObservable();
   }
 
+  getUserId() {
+    return this.userId;
+  }
+
   ngOnDestroy() {
     if (this.userSub) {
       this.userSub.unsubscribe();
