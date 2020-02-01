@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services';
 import { User } from '../../schemas';
@@ -20,16 +21,18 @@ export class LoginPageComponent implements OnInit {
   });
 
   constructor(
+    private router: Router,
     private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.user$ = this.userService.getUser();
+    this.user$ = this.userService.getUser$();
   }
 
-  login() {
+  async login() {
     const { email, password } = this.loginForm.value;
-    this.userService.login(email, password);
+    await this.userService.login(email, password);
+    this.router.navigate(['find']);
   }
 
   async register() {

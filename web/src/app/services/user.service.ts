@@ -60,7 +60,7 @@ export class UserService implements OnDestroy {
     });
   }
 
-  getUser() {
+  getUser$() {
     return this.user$.asObservable();
   }
 

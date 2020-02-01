@@ -1,0 +1,26 @@
+<ng-container *ngIf="user$ | async as user">
+    Pick class:
+    
+    <button
+        *ngFor="let course of courses$ | async"
+        (click)="pickCourse(course.id)"
+        mat-raised-button
+    >
+        {{ course.code }} - {{ course.name }}
+    </button>
+    
+    <ng-container *ngIf="pickedCourse">
+        Pick mentor:
+    
+        <ng-container *ngFor="let mentor of mentors$ | async">
+            <ng-container *ngIf="(mentor.user | firedoc:'users' | async) as mentor">
+                <button
+                    (click)="matchMentor(user.id, mentor.id)"
+                    mat-raised-button
+                >
+                    {{ mentor.name }}
+                </button>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</ng-container>

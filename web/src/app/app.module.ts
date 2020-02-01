@@ -15,11 +15,15 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './page/login-page/login-page.component';
+import { FindPageComponent } from './page/find-page/find-page.component';
+import { FiredocPipe } from './firedoc.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    FindPageComponent,
+    FiredocPipe
   ],
   imports: [
     BrowserModule,
