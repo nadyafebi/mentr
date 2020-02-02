@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="page">
-    Pick mentee:
+    Swipe right to match, swipe left to ignore.
 
     <ul 
         swing-stack
@@ -11,6 +11,7 @@
         (throwoutleft)="onThrowOutLeft($event)"
         class="stack"
     >
+        <li class="empty-mentor">No mentee available! :(</li>
         <li
             swing-card
             #mycards

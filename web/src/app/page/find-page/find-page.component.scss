@@ -1,5 +1,11 @@
 .page {
     color: white;
+    align-items: center;
+    text-align: center;
+}
+
+mat-form-field {
+    width: 100%;
 }
 
 .stack {
@@ -75,4 +81,8 @@ $break-large: 64em;
     @media screen and (min-width: $break-large) {
         width: 37.5vw;
     }
+}
+
+.empty-mentor {
+    margin-top: 12.5vh;
 }
