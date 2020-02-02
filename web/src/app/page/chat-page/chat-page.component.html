@@ -31,6 +31,10 @@
         </div>
     </div>
     <div class="profile">
-
+        <ng-container *ngIf="match$ | async as match">
+            <ng-container *ngIf="(match.mentor === userId ? match.mentee : match.mentor) | firedoc:'users' | async as user">
+                {{ user.name }}
+            </ng-container>
+        </ng-container>
     </div>
 </div>
