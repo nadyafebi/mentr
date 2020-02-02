@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { User } from '../schemas';
+import { async } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,22 @@ export class UserService implements OnDestroy {
     private afs: AngularFirestore
   ) { }
 
+  async start() {
+    return new Promise((resolve, reject) => {
+      const sub = this.afAuth.user.subscribe(async user => {
+        if (user) {
+          await this.setUser(user.uid);
+        }
+        sub.unsubscribe();
+        resolve();
+      });
+    });
+  }
+
   async login(email: string, password: string) {
     try {
       const userCred = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
-      this.userId = userCred.user.uid;
-      await this.setUser(this.userId);
+      await this.setUser(userCred.user.uid);
       return;
     } catch (err) {
       console.error(err);
@@ -54,6 +66,7 @@ export class UserService implements OnDestroy {
       this.userSub = this.afs.collection('users').doc<User>(id).valueChanges()
       .subscribe(user => {
         user.id = id;
+        this.userId = id;
         this.user$.next(user);
         resolve();
       });

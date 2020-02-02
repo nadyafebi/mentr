@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -12,18 +12,28 @@ import { MaterialModule } from './material';
 
 import { environment } from '../environments/environment';
 
+import { UserService } from './services';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './page/login-page/login-page.component';
 import { FindPageComponent } from './page/find-page/find-page.component';
 import { FiredocPipe } from './firedoc.pipe';
+import { ChatPageComponent } from './page/chat-page/chat-page.component';
+
+export function initApp(userService: UserService) {
+  return () => {
+    return userService.start();
+  };
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     FindPageComponent,
-    FiredocPipe
+    FiredocPipe,
+    ChatPageComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +47,14 @@ import { FiredocPipe } from './firedoc.pipe';
     AngularFirestoreModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initApp,
+      multi: true,
+      deps: [UserService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,16 @@
+<div>
+    <div *ngFor="let chat of chats$ | async">
+        <b>{{ (chat.user | firedoc:'users' | async)?.name }}:</b> {{ chat.content }}
+    </div>
+</div>
+
+<div>
+    <input
+        [formControl]="chatForm"
+        placeholder="Hello..."
+        matInput
+    >
+    <button (click)="sendText()" mat-raised-button>
+        Send
+    </button>
+</div>
