@@ -20,16 +20,16 @@
             </div>
         </div>
         
-        <div class="chat-box">
+        <form class="chat-box">
             <input
                 [formControl]="chatForm"
                 placeholder="Hello..."
                 matInput
             >
-            <button (click)="sendText()" mat-flat-button>
+            <button (click)="sendText()" type="submit" mat-flat-button>
                 Send
             </button>
-        </div>
+        </form>
     </div>
     <div class="profile hide-on-mobile">
         <ng-container *ngIf="match$ | async as match">

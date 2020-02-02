@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { DataService, UserService } from '../../services';
 import { Chat, Match } from '../../schemas';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ export class ChatPageComponent implements OnInit {
   chatroomId: string;
   chats$: Observable<Chat[]>;
   match$: Observable<Match>;
-  chatForm = new FormControl('');
+  chatForm = new FormControl('', Validators.required);
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +34,10 @@ export class ChatPageComponent implements OnInit {
   }
 
   async sendText() {
-    await this.dataService.sendChat(this.chatroomId, this.userId, 'text', this.chatForm.value);
+    if (this.chatForm.value) {
+      await this.dataService.sendChat(this.chatroomId, this.userId, 'text', this.chatForm.value);
+      this.chatForm.reset();
+    }
   }
 
 }
