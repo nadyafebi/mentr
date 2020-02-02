@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/
 import { FormControl } from '@angular/forms';
 import { DataService, UserService } from '../../services';
 import { Course, Match, Mentor, User } from '../../schemas';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material';
 import {
   Direction,
@@ -44,7 +45,24 @@ export class FindPageComponent implements OnInit {
 
   ngOnInit() {
     this.user$ = this.userService.getUser$();
-    this.courses$ = this.dataService.getCourses$();
+
+    this.courses$ = combineLatest(
+      this.dataService.getCourses$(),
+      this.courseForm.valueChanges
+    )
+    .pipe(
+      map(([courses, input]) => {
+        if (!input) {
+          return courses;
+        } else {
+          return courses.filter(course => {
+            const fullname = `${course.code} - ${course.name}`.toLowerCase();
+            return fullname.includes(input);
+          });
+        }
+      })
+    );
+
     this.menteeMatches$ = this.dataService.findMenteeMatches$(this.userService.getUserId());
 
     this.stackConfig = {

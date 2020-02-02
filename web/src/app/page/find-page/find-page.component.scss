@@ -4,8 +4,33 @@
     text-align: center;
 }
 
+$break-small: 40em;
+$break-large: 64em;
+
+.search-box {
+    margin-bottom: 24px;
+    padding: 4px;
+
+    @media screen and (max-width: $break-small) {
+        width: 100%;
+    }
+
+    @media screen and (min-width: $break-small) and (max-width: $break-large) {
+        width: 100%;
+    }
+
+    @media screen and (min-width: $break-large) {
+        width: 50vw;
+    }
+}
+
 mat-form-field {
     width: 100%;
+
+    ::ng-deep .mat-form-field-wrapper {
+        margin: 0;
+        padding: 0;
+    }
 }
 
 .stack {
@@ -21,8 +46,6 @@ mat-form-field {
     padding: 0;
 }
 
-$break-small: 40em;
-$break-large: 64em;
 .mentor-card {
     height: 50vh;
     padding: 0;

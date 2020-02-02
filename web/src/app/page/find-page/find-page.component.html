@@ -2,14 +2,16 @@
 
 <div class="page" *ngIf="user$ | async as user">
     <p>What course do you want to be mentored in?</p>
-    <mat-form-field appearance="outline">
-        <input type="text" matInput [formControl]="courseForm" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="autoDisplay" (optionSelected)="pickCourse($event)">
-            <mat-option *ngFor="let course of courses$ | async" [value]="course">
-                {{ course.code }} - {{ course.name }}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
+    <mat-card class="search-box">
+        <mat-form-field appearance="outline">
+            <input type="text" matInput placeholder="Search..." [formControl]="courseForm" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="autoDisplay" (optionSelected)="pickCourse($event)">
+                <mat-option *ngFor="let course of courses$ | async" [value]="course">
+                    {{ course.code }} - {{ course.name }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </mat-card>
 
     <ng-container *ngIf="pickedCourse">
         Swipe right to match, swipe left to ignore.
