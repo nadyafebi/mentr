@@ -37,10 +37,12 @@ export class DataService {
         return mentorDocs.map(mentorDoc => {
           const mentor = mentorDoc.payload.doc.data();
           mentor.id = mentorDoc.payload.doc.id;
+          mentor.reviewCount = Math.floor((Math.random() * 100) + 1);
+          mentor.reviewStars = Math.floor(Math.random() * (5 - 3 + 1) + 3);;
           return mentor;
         });
       })
-    );;
+    );
   }
 
   findMenteeMatches$(mentorId: string) {

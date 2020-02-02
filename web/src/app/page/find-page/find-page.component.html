@@ -24,13 +24,18 @@
             <li
                 swing-card 
                 #mycards 
-                *ngFor="let mentor of mentors$ | async; index as i"
-                [style.margin-top]="i * 5 + 'px'"
+                *ngFor="let mentor of mentors$ | async as mentors; index as i"
                 [id]="mentor.user"
             >
-                <mat-card *ngIf="(mentor.user | firedoc:'users' | async) as m;" class="mentor-card">
-                    <mat-card>
+                <mat-card *ngIf="(mentor.user | firedoc:'users' | async) as m;" class="mentor-card mat-elevation-z4">
+                    <img [src]="m.id | avatar | async" class="card-cover">
+                    <mat-card class="mentor-info-card mat-elevation-z4">
                         <h2>{{ m.name }}</h2>
+                        <p class ="profile-section">{{ m.level | uppercase }} | {{ m.major | uppercase }}</p>
+                        <p class="profile-stars">
+                            <mat-icon *ngFor="let star of [].constructor(mentor.reviewStars)">star</mat-icon>
+                        </p>
+                        <p class="profile-section-title">BY {{ mentor.reviewCount }} MENTEES</p>
                     </mat-card>
                 </mat-card>
             </li>
