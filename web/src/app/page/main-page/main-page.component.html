@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+
+<div class="page">
+    <div class="intro">
+        <h1>Hi {{ (user$ | async)?.name }}!</h1>
+        <p>Ready to get started?</p>
+    </div>
+    
+    <div class="action-cards">
+        <mat-card>
+            <img src="/assets/find-mentor-icon.png">
+            <span class="action-text">Find Mentor</span>
+        </mat-card>
+        <mat-card>
+            <img src="/assets/find-mentee-icon.png">
+            <span class="action-text">Find Mentee</span>
+        </mat-card>
+        <mat-card>
+            <img src="/assets/calendar-icon.png">
+            <span class="action-text">Calendar</span>
+        </mat-card>
+    </div>
+
+    <div class="mentor-section">
+        <h2>Your Mentors</h2>
+        <div class="mentor-list">
+            <ng-container *ngFor="let match of matches$ | async">
+                <mat-card>
+                    <div *ngIf="(match.mentor | firedoc:'users' | async) as user" class="profile-pic">
+                        <img [src]="user.id | avatar | async">
+                    </div>
+                    <div class="mentor-info">
+                        <p><b>{{ (match.mentor | firedoc:'users' | async)?.name }}</b></p>
+                        <p>{{ (match.course | firedoc:'courses' | async)?.code }}</p>
+                    </div>
+                </mat-card>
+            </ng-container>
+        </div>
+    </div>
+</div>

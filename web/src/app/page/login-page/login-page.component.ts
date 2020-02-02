@@ -36,7 +36,7 @@ export class LoginPageComponent implements OnInit {
     try {
       const { email, password } = this.loginForm.value;
       await this.userService.login(email, password);
-      this.router.navigate(['find']);
+      this.router.navigate(['main']);
     } catch (err) {
       console.error(err);
       alert(err);

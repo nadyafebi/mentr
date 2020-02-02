@@ -78,12 +78,27 @@ $break-large: 64em;
     flex-direction: column;
     min-height: 100vh;
 
+    @media screen and (max-width: $break-small) {
+        margin: 0 5vw;
+    }
+
     @media screen and (min-width: $break-small) and (max-width: $break-large) {
         margin: 0 12.5vw;
     }
 
     @media screen and (min-width: $break-large) {
-        margin: 0 25vw;
+        margin: 0 20vw;
+    }
+}
+
+.page-with-navbar {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    .page {
+        min-height: unset;
+        padding-top: 24px;
     }
 }
 

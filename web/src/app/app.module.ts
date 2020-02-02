@@ -22,6 +22,9 @@ import { FiredocPipe } from './firedoc.pipe';
 import { ChatPageComponent } from './page/chat-page/chat-page.component';
 import { RegisterPageComponent } from './page/register-page/register-page.component';
 import { ButtonComponent } from './components/button/button.component';
+import { MainPageComponent } from './page/main-page/main-page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AvatarPipe } from './avatar.pipe';
 
 export function initApp(userService: UserService) {
   return () => {
@@ -37,7 +40,10 @@ export function initApp(userService: UserService) {
     FiredocPipe,
     ChatPageComponent,
     RegisterPageComponent,
-    ButtonComponent
+    ButtonComponent,
+    MainPageComponent,
+    NavbarComponent,
+    AvatarPipe
   ],
   imports: [
     BrowserModule,

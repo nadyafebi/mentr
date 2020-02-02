@@ -3,6 +3,6 @@ export interface User {
     email: string;
     name: string;
     major: string;
-    avatar: string;
+    avatar?: boolean;
     level: string;
 }

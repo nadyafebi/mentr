@@ -51,6 +51,14 @@ export class DataService {
     );
   }
 
+  findMatchedMentors$(userId: string) {
+    return this.afs.collection<Match>('matches', ref => {
+      return ref
+      .where('mentee', '==', userId)
+      .where('status', '==', 'accepted');
+    }).valueChanges();
+  }
+
   async createMatch(userId: string, mentorId: string, courseId: string) {
     await this.afs.collection('matches').add({
       mentee: userId,

@@ -42,7 +42,7 @@ export class UserService implements OnDestroy {
       name,
       major,
       level,
-      avatar: ''
+      avatar: false
     });
   }
 
