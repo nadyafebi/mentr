@@ -5,6 +5,7 @@ import { RegisterPageComponent } from './page/register-page/register-page.compon
 import { FindPageComponent } from './page/find-page/find-page.component';
 import { ChatPageComponent } from './page/chat-page/chat-page.component';
 import { MainPageComponent } from './page/main-page/main-page.component';
+import { LandingPageComponent } from './page/landing-page/landing-page.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'find',
     component: FindPageComponent
+  },
+  {
+    path: 'landing',
+    component: LandingPageComponent
   },
   {
     path: 'chat/:chatroomId',

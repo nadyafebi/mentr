@@ -1,0 +1,78 @@
+mat-toolbar {
+    background: rgba(0, 0, 0, 0.125) !important;
+    color: white !important;
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gear1 {
+  top: 264px;
+  height: 650px;
+  width: 650px;
+  position: absolute;
+  margin: 0;
+  left: 930px;
+  animation: spin 20s linear infinite;
+  transform: rotate(0deg);
+  opacity: 0.8;
+}
+
+.gear2 {
+  top: -429px;
+  height: 1000px;
+  width: 1000px;
+  position: absolute;
+  margin: 0;
+  left: -430px;
+  animation: spin 45s linear infinite;
+  transform: rotate(0deg);
+  opacity: 0.8;
+}
+
+.gear3 {
+  top: 500px;
+  height: 500px;
+  width: 500px;
+  position: absolute;
+  margin: 0;
+  left: 250px;	
+  animation: spin 45s linear infinite;
+  transform: rotate(0deg);
+  opacity: 0.8;
+}
+
+.tagline {
+  top: 330px;
+  font-size: 70px;
+  position: absolute;
+  margin: 0;
+  font-family: Roboto, "Helvetica-Bold", sans-serif;
+  color: #ffff;
+  text-align: center;
+  transform           : rotate(0deg);
+}
+
+.description {
+  top                 : 430px;
+  width: 800px;
+  position            : absolute;
+  margin              : 0;
+  font-family: Roboto, "Helvetica", sans-serif;
+  font-size           : 16px;
+  color               : #ffffff;
+  text-align          : center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

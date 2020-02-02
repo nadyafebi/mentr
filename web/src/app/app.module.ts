@@ -25,6 +25,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { MainPageComponent } from './page/main-page/main-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AvatarPipe } from './avatar.pipe';
+import { LandingPageComponent } from './page/landing-page/landing-page.component';
 
 export function initApp(userService: UserService) {
   return () => {
@@ -43,7 +44,8 @@ export function initApp(userService: UserService) {
     ButtonComponent,
     MainPageComponent,
     NavbarComponent,
-    AvatarPipe
+    AvatarPipe,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
