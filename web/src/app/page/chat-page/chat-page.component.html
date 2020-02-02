@@ -33,7 +33,21 @@
     <div class="profile">
         <ng-container *ngIf="match$ | async as match">
             <ng-container *ngIf="(match.mentor === userId ? match.mentee : match.mentor) | firedoc:'users' | async as user">
-                {{ user.name }}
+                <div class="profile-image-cropper">
+                    <img [src]="user.id | avatar | async" class="profile-image">
+                </div>
+                <b>{{ user.name }}</b>
+                <p class ="profile-section-title">YEAR</p>
+                <p class ="profile-section">{{ user.level | uppercase }}</p>
+                <p class ="profile-section-title">MAJOR</p>
+                <p class ="profile-section">{{ user.major | uppercase }}</p>
+                <p class ="profile-section-title">TUTOR FOR</p>
+                <p class ="profile-section">{{ (match.course | firedoc:'courses' | async)?.code | uppercase }}</p>
+                <p class ="profile-section-title">EMAIL ADDRESS</p>
+                <p class ="profile-section">{{ user.email | uppercase }}</p>
+
+                <img src="/assets/calendar-icon.png" class="book-appt">
+                <p class ="profile-section-title">SCHEDULE A STUDY SESSION</p>
             </ng-container>
         </ng-container>
     </div>
