@@ -9,6 +9,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { MaterialModule } from './material';
+import { SwingModule } from 'angular2-swing';
 
 import { environment } from '../environments/environment';
 
@@ -55,7 +56,8 @@ export function initApp(userService: UserService) {
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    MaterialModule
+    MaterialModule,
+    SwingModule
   ],
   providers: [
     {

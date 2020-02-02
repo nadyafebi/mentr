@@ -1,40 +1,39 @@
-<ng-container *ngIf="user$ | async as user">
-    Hello {{ user.name }}!
+<app-navbar></app-navbar>
 
-    Pick class:
-    
-    <button
-        *ngFor="let course of courses$ | async"
-        (click)="pickCourse(course.id)"
-        mat-raised-button
-    >
-        {{ course.code }} - {{ course.name }}
-    </button>
-    
+<div class="page" *ngIf="user$ | async as user">
+    <p>Enter the course you want to be mentored in:</p>
+    <mat-form-field appearance="outline">
+        <input type="text" matInput [formControl]="courseForm" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="autoDisplay" (optionSelected)="pickCourse($event)">
+            <mat-option *ngFor="let course of courses$ | async" [value]="course">
+                {{ course.code }} - {{ course.name }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
     <ng-container *ngIf="pickedCourse">
         Pick mentor:
-    
-        <ng-container *ngFor="let mentor of mentors$ | async">
-            <ng-container *ngIf="(mentor.user | firedoc:'users' | async) as mentor">
-                <button
-                    (click)="matchMentor(user.id, mentor.id)"
-                    mat-raised-button
-                >
-                    {{ mentor.name }}
-                </button>
-            </ng-container>
-        </ng-container>
-    </ng-container>
 
-    Pick mentee:
-    <ng-container *ngFor="let match of menteeMatches$ | async">
-        <ng-container *ngIf="(match.mentee | firedoc:'users' | async) as mentee">
-            <button
-                (click)="acceptMatch(match.id)"
-                mat-raised-button
+        <ul 
+            swing-stack
+            [stackConfig]="stackConfig"
+            #mystack
+            (throwoutright)="onThrowOutRight($event)" 
+            class="stack"
+        >
+            <li
+                swing-card 
+                #mycards 
+                *ngFor="let mentor of mentors$ | async; index as i"
+                [style.margin-top]="i * 5 + 'px'"
+                [id]="mentor.user"
             >
-                {{ mentee.name }}
-            </button>
-        </ng-container>
+                <mat-card *ngIf="(mentor.user | firedoc:'users' | async) as m;" class="mentor-card">
+                    <mat-card>
+                        <h2>{{ m.name }}</h2>
+                    </mat-card>
+                </mat-card>
+            </li>
+        </ul>
     </ng-container>
-</ng-container>
+</div>

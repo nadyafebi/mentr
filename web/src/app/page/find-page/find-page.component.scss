@@ -1,0 +1,33 @@
+.page {
+    color: white;
+}
+
+.stack {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    li {
+        position: absolute
+    }
+
+    padding: 0;
+}
+
+$break-small: 40em;
+$break-large: 64em;
+.mentor-card {
+    height: 50vh;
+    @media screen and (max-width: $break-small) {
+        width: 75vw;
+    }
+
+    @media screen and (min-width: $break-small) and (max-width: $break-large) {
+        width: 50vw;
+    }
+
+    @media screen and (min-width: $break-large) {
+        width: 37.5vw;
+    }
+}

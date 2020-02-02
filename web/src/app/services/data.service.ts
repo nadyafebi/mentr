@@ -30,7 +30,17 @@ export class DataService {
   findMentors$(courseId: string) {
     return this.afs.collection<Mentor>('mentors', ref => {
       return ref.where('course', '==', courseId);
-    }).valueChanges();
+    })
+    .snapshotChanges()
+    .pipe(
+      map(mentorDocs => {
+        return mentorDocs.map(mentorDoc => {
+          const mentor = mentorDoc.payload.doc.data();
+          mentor.id = mentorDoc.payload.doc.id;
+          return mentor;
+        });
+      })
+    );;
   }
 
   findMenteeMatches$(mentorId: string) {
