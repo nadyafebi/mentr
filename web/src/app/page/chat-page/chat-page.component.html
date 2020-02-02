@@ -30,7 +30,7 @@
             </button>
         </div>
     </div>
-    <div class="profile">
+    <div class="profile hide-on-mobile">
         <ng-container *ngIf="match$ | async as match">
             <ng-container *ngIf="(match.mentor === userId ? match.mentee : match.mentor) | firedoc:'users' | async as user">
                 <div class="profile-image-cropper">

@@ -109,3 +109,9 @@ $break-large: 64em;
 .clickable {
     cursor: pointer;
 }
+
+.hide-on-mobile {
+    @media screen and (max-width: $break-small) {
+        display: none !important;
+    }
+}
