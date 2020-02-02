@@ -1,8 +1,9 @@
 <mat-toolbar>
-    mentr.
-    <div class="flex-span"></div>
-    <button mat-button>Sign Up</button>
-    <button (click)="signOut()" mat-button>Log In</button>
+    <span class="clickable" routerLink="/landing">
+    	<img src="/assets/mentr-logo.png" class="icon-settings">
+    </span>
+    <button routerLink="/register" mat-button>Sign Up</button>
+    <button routerLink="/login" mat-button>Sign In</button>
 </mat-toolbar>
 
 <img src="/assets/gear1.png" class="gear1">
@@ -11,16 +12,13 @@
 
 <div class="content">
 	<header class="tagline">
-		Mentees deserve better.
+		Match with a mentor today!
 	</header>
 	<p class="description">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br />eiusmod tempor incididunt ut labore et dolore magna aliqua.
+		All of us have times where we wish we had mentors. We believe that with mentr. the process of mentor-mentee matching can be done effectively without hassle.
 	</p>
 	<button (click)="action.emit()" mat-flat-button [color]="color" [disabled]="disabled || loading">
     <span [class.hide-text]="loading"><ng-content></ng-content></span>
-    <button (click)="register()" mat-flat-button class="join-button" class="button-settings">JOIN MENTR.</button>
-</button>
-
-
-
+    <button routerLink="/register" mat-flat-button class="join-button" class="button-settings">JOIN MENTR.</button>
+	</button>
 </div>

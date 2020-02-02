@@ -2,6 +2,14 @@ mat-toolbar {
     background: rgba(0, 0, 0, 0.125) !important;
     color: white !important;
 }
+
+.icon-settings {
+  margin-top: 8px;
+  left: 5px;
+  width: 5%;
+  height: 5%;
+}
+
 .hide-text {
     opacity: 0;
 }
@@ -34,6 +42,7 @@ mat-spinner {
   animation: spin 20s linear infinite;
   transform: rotate(0deg);
   opacity: 0.8;
+  z-index: -100;
 }
 
 .gear2 {
@@ -46,6 +55,7 @@ mat-spinner {
   animation: spin 45s linear infinite;
   transform: rotate(0deg);
   opacity: 0.8;
+  z-index: -100;
 }
 
 .gear3 {
@@ -58,6 +68,7 @@ mat-spinner {
   animation: spin 45s linear infinite;
   transform: rotate(0deg);
   opacity: 0.8;
+  z-index: -100;
 }
 
 .tagline {
@@ -72,7 +83,7 @@ mat-spinner {
 
 .description {
   top                 : 430px;
-  width: 800px;
+  width: 700px;
   margin-bottom              : 15px;
   font-family: Roboto, "Helvetica", sans-serif;
   font-size           : 16px;
