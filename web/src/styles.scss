@@ -76,7 +76,7 @@ $break-large: 64em;
 .page {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
 
     @media screen and (max-width: $break-small) {
         margin: 0 5vw;
@@ -94,7 +94,7 @@ $break-large: 64em;
 .page-with-navbar {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
 
     .page {
         min-height: unset;

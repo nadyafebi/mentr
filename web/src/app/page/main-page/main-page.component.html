@@ -25,7 +25,7 @@
         <h2>Your Mentors</h2>
         <div class="mentor-list">
             <ng-container *ngFor="let match of matches$ | async">
-                <mat-card>
+                <mat-card [routerLink]="'/chat/' + match.id">
                     <div *ngIf="(match.mentor | firedoc:'users' | async) as user" class="profile-pic">
                         <img [src]="user.id | avatar | async">
                     </div>

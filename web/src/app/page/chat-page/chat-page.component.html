@@ -1,16 +1,28 @@
-<div>
-    <div *ngFor="let chat of chats$ | async">
-        <b>{{ (chat.user | firedoc:'users' | async)?.name }}:</b> {{ chat.content }}
-    </div>
-</div>
+<app-navbar></app-navbar>
 
-<div>
-    <input
-        [formControl]="chatForm"
-        placeholder="Hello..."
-        matInput
-    >
-    <button (click)="sendText()" mat-raised-button>
-        Send
-    </button>
+<div class="chat-page">
+    <div class="other-chats">
+
+    </div>
+    <div class="chat-content">
+        <div class="chat-history">
+            <div *ngFor="let chat of chats$ | async">
+                <b>{{ (chat.user | firedoc:'users' | async)?.name }}:</b> {{ chat.content }}
+            </div>
+        </div>
+        
+        <div class="chat-box">
+            <input
+                [formControl]="chatForm"
+                placeholder="Hello..."
+                matInput
+            >
+            <button (click)="sendText()" mat-flat-button>
+                Send
+            </button>
+        </div>
+    </div>
+    <div class="profile">
+
+    </div>
 </div>

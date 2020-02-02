@@ -1,0 +1,56 @@
+.chat-page {
+    background: white;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+$break-small: 40em;
+$break-large: 64em;
+.other-chats, .profile {
+    background: #eee;
+
+    @media screen and (max-width: $break-large) {
+        width: 0;
+    }
+
+    @media screen and (min-width: $break-large) {
+        width: 25vw;
+    }
+}
+
+.chat-content {
+    flex: 1 1 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    @media screen and (min-width: $break-large) {
+        border-left: 1px solid rgba(0, 0, 0, .25);
+        border-right: 1px solid rgba(0, 0, 0, .25);
+    }
+
+    .chat-history {
+        flex: 10;
+        padding: 16px;
+        overflow-y: auto;
+    }
+    
+    .chat-box {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        border-top: 1px solid rgba(0, 0, 0, .25);
+        padding-top: 1px;
+
+        input {
+            width: 90%;
+            border: none;
+            padding-left: 24px;
+        }
+
+        button {
+            width: 10%;
+        }
+    }
+}

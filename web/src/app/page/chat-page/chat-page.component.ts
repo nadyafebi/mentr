@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   templateUrl: './chat-page.component.html',
   styleUrls: ['./chat-page.component.scss'],
   host: {
-    class: 'page'
+    class: 'page-with-navbar'
   }
 })
 export class ChatPageComponent implements OnInit {
