@@ -26,6 +26,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { MainPageComponent } from './page/main-page/main-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AvatarPipe } from './avatar.pipe';
+import { FindMenteePageComponent } from './page/find-mentee-page/find-mentee-page.component';
 
 export function initApp(userService: UserService) {
   return () => {
@@ -44,7 +45,8 @@ export function initApp(userService: UserService) {
     ButtonComponent,
     MainPageComponent,
     NavbarComponent,
-    AvatarPipe
+    AvatarPipe,
+    FindMenteePageComponent
   ],
   imports: [
     BrowserModule,

@@ -65,14 +65,6 @@ export class FindPageComponent implements OnInit {
     this.mentors$ = this.dataService.findMentors$(this.pickedCourse);
   }
 
-  async matchMentor(userId: string, mentorId: string) {
-    await this.dataService.createMatch(userId, mentorId, this.pickedCourse);
-  }
-
-  async acceptMatch(matchId: string) {
-    await this.dataService.acceptMatch(matchId);
-  }
-
   autoDisplay(course: Course) {
     if (course) {
       return `${course.code} - ${course.name}`;

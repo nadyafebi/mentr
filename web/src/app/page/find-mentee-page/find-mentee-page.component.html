@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div class="page">
+    Pick mentee:
+
+    <ul 
+        swing-stack
+        [stackConfig]="stackConfig"
+        #mystack
+        (throwoutright)="onThrowOutRight($event)"
+        (throwoutleft)="onThrowOutLeft($event)"
+        class="stack"
+    >
+        <li
+            swing-card
+            #mycards
+            *ngFor="let match of matches$ | async; index as i"
+            [style.margin-top]="i * 5 + 'px'"
+            [id]="match.id"
+        >
+            <mat-card *ngIf="(match.mentee | firedoc:'users' | async) as m;" class="mentor-card">
+                <mat-card>
+                    <h2>{{ m.name }}</h2>
+                </mat-card>
+            </mat-card>
+        </li>
+    </ul>
+</div>

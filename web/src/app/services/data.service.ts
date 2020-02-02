@@ -93,6 +93,12 @@ export class DataService {
     });
   }
 
+  async rejectMatch(matchId: string) {
+    await this.afs.collection('matches').doc<Match>(matchId).update({
+      status: 'rejected'
+    });
+  }
+
   async sendChat(matchId: string, userId: string, type: 'text' | 'image', content: string) {
     await this.afs.collection('matches').doc(matchId).collection<Chat>('chats').add({
       user: userId,

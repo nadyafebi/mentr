@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './page/login-page/login-page.component';
 import { RegisterPageComponent } from './page/register-page/register-page.component';
 import { FindPageComponent } from './page/find-page/find-page.component';
+import { FindMenteePageComponent } from './page/find-mentee-page/find-mentee-page.component';
 import { ChatPageComponent } from './page/chat-page/chat-page.component';
 import { MainPageComponent } from './page/main-page/main-page.component';
 
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'find',
     component: FindPageComponent
+  },
+  {
+    path: 'find-mentee',
+    component: FindMenteePageComponent
   },
   {
     path: 'chat/:chatroomId',
