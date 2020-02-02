@@ -21,20 +21,41 @@
         </mat-card>
     </div>
 
-    <div class="mentor-section">
-        <h2>Your Mentors</h2>
-        <div class="mentor-list">
-            <ng-container *ngFor="let match of matches$ | async">
-                <mat-card [routerLink]="'/chat/' + match.id">
-                    <div *ngIf="(match.mentor | firedoc:'users' | async) as user" class="profile-pic">
-                        <img [src]="user.id | avatar | async">
-                    </div>
-                    <div class="mentor-info">
-                        <p><b>{{ (match.mentor | firedoc:'users' | async)?.name }}</b></p>
-                        <p>{{ (match.course | firedoc:'courses' | async)?.code }}</p>
-                    </div>
-                </mat-card>
-            </ng-container>
-        </div>
+    <div *ngIf="mentorMatches$ | async as matches" class="mentor-section">
+        <ng-container *ngIf="matches?.length > 0">
+            <h2>Your Mentors</h2>
+            <div class="mentor-list">
+                <ng-container *ngFor="let match of matches">
+                    <mat-card [routerLink]="'/chat/' + match.id">
+                        <div *ngIf="(match.mentor | firedoc:'users' | async) as user" class="profile-pic">
+                            <img [src]="user.id | avatar | async">
+                        </div>
+                        <div class="mentor-info">
+                            <p><b>{{ (match.mentor | firedoc:'users' | async)?.name }}</b></p>
+                            <p>{{ (match.course | firedoc:'courses' | async)?.code }}</p>
+                        </div>
+                    </mat-card>
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
+
+    <div *ngIf="menteeMatches$ | async as matches" class="mentor-section">
+        <ng-container *ngIf="matches?.length > 0">
+            <h2>Your Mentees</h2>
+            <div class="mentor-list">
+                <ng-container *ngFor="let match of matches">
+                    <mat-card [routerLink]="'/chat/' + match.id">
+                        <div *ngIf="(match.mentee | firedoc:'users' | async) as user" class="profile-pic">
+                            <img [src]="user.id | avatar | async">
+                        </div>
+                        <div class="mentor-info">
+                            <p><b>{{ (match.mentee | firedoc:'users' | async)?.name }}</b></p>
+                            <p>{{ (match.course | firedoc:'courses' | async)?.code }}</p>
+                        </div>
+                    </mat-card>
+                </ng-container>
+            </div>
+        </ng-container>
     </div>
 </div>

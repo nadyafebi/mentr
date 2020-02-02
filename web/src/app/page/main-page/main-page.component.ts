@@ -13,7 +13,8 @@ import { Match, User } from '../../schemas';
 })
 export class MainPageComponent implements OnInit {
   user$: Observable<User>;
-  matches$: Observable<Match[]>;
+  mentorMatches$: Observable<Match[]>;
+  menteeMatches$: Observable<Match[]>
 
   constructor(
     private dataService: DataService,
@@ -22,7 +23,10 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit() {
     this.user$ = this.userService.getUser$();
-    this.matches$ = this.dataService.findMatchedMentors$(this.userService.getUserId());
+
+    const userId = this.userService.getUserId();
+    this.mentorMatches$ = this.dataService.findMatchedMentors$(userId);
+    this.menteeMatches$ = this.dataService.findMatchedMentees$(userId);
   }
 
 }

@@ -77,7 +77,24 @@ export class DataService {
           return match;
         });
       })
-    );;
+    );
+  }
+
+  findMatchedMentees$(userId: string) {
+    return this.afs.collection<Match>('matches', ref => {
+      return ref
+      .where('mentor', '==', userId)
+      .where('status', '==', 'accepted');
+    }).snapshotChanges()
+    .pipe(
+      map(matchDocs => {
+        return matchDocs.map(matchDoc => {
+          const match = matchDoc.payload.doc.data();
+          match.id = matchDoc.payload.doc.id;
+          return match;
+        });
+      })
+    );
   }
 
   async createMatch(userId: string, mentorId: string, courseId: string) {
