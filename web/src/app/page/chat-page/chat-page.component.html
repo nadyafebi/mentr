@@ -7,7 +7,15 @@
     <div class="chat-content">
         <div class="chat-history">
             <div *ngFor="let chat of chats$ | async">
-                <b>{{ (chat.user | firedoc:'users' | async)?.name }}:</b> {{ chat.content }}
+            <div class="speech-wrapper">
+                <div class="bubble" [class.alt]="chat.user == userId">
+                    <div class="txt">
+                        <p class="name" [class.alt]="chat.user == userId">{{ (chat.user | firedoc:'users' | async)?.name }}</p>
+                        <p class="message">{{ chat.content }}</p>
+                    </div>
+                <div class="bubble-arrow" [class.alt]="chat.user == userId"></div>
+                </div>
+            </div>
             </div>
         </div>
         
