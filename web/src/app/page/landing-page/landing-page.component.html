@@ -1,7 +1,6 @@
 <mat-toolbar>
     mentr.
     <div class="flex-span"></div>
-    <button mat-button>About</button>
     <button mat-button>Sign Up</button>
     <button (click)="signOut()" mat-button>Log In</button>
 </mat-toolbar>
@@ -17,6 +16,11 @@
 	<p class="description">
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br />eiusmod tempor incididunt ut labore et dolore magna aliqua.
 	</p>
+	<button (click)="action.emit()" mat-flat-button [color]="color" [disabled]="disabled || loading">
+    <span [class.hide-text]="loading"><ng-content></ng-content></span>
+    <button (click)="register()" mat-flat-button class="join-button">JOIN MENTR.</button>
+</button>
+
 
 
 </div>
