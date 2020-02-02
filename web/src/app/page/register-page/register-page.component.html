@@ -1,0 +1,60 @@
+<div class="page-content">
+    <img src="/assets/mentr-logo.png" class="logo">
+    <mat-card class="mat-elevation-z4">
+        <form [formGroup]="registerForm">
+            <mat-form-field floatLabel="always" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                    formControlName="email" 
+                    type="email"
+                    placeholder="peter@uci.edu"
+                    matInput
+                >
+            </mat-form-field>
+            
+            <mat-form-field floatLabel="always" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input 
+                    formControlName="password" 
+                    type="password"
+                    placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+                    matInput
+                >
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" appearance="outline">
+                <mat-label>Name</mat-label>
+                <input
+                    formControlName="name" 
+                    type="text"
+                    placeholder="Peter"
+                    matInput
+                >
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" appearance="outline">
+                <mat-label>Major</mat-label>
+                <input
+                    formControlName="major" 
+                    type="text"
+                    placeholder="Computer Science"
+                    matInput
+                >
+            </mat-form-field>
+
+            <mat-form-field floatLabel="always" appearance="outline">
+                <mat-label>Class Standing</mat-label>
+                <mat-select formControlName="level" placeholder="Freshman">
+                    <mat-option value="Freshman">Freshman</mat-option>
+                    <mat-option value="Sophomore">Sophomore</mat-option>
+                    <mat-option value="Junior">Junior</mat-option>
+                    <mat-option value="Senior">Senior</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <div class="form-actions">
+            <div class="flex-span"></div>
+            <app-button (action)="register()" [disabled]="registerForm.invalid" [loading]="registerLoading">Login</app-button>
+        </div>
+    </mat-card>
+</div>

@@ -20,6 +20,8 @@ import { LoginPageComponent } from './page/login-page/login-page.component';
 import { FindPageComponent } from './page/find-page/find-page.component';
 import { FiredocPipe } from './firedoc.pipe';
 import { ChatPageComponent } from './page/chat-page/chat-page.component';
+import { RegisterPageComponent } from './page/register-page/register-page.component';
+import { ButtonComponent } from './components/button/button.component';
 
 export function initApp(userService: UserService) {
   return () => {
@@ -33,7 +35,9 @@ export function initApp(userService: UserService) {
     LoginPageComponent,
     FindPageComponent,
     FiredocPipe,
-    ChatPageComponent
+    ChatPageComponent,
+    RegisterPageComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

@@ -35,10 +35,14 @@ export class UserService implements OnDestroy {
     await this.setUser(userCred.user.uid);
   }
 
-  async register(email: string, password: string) {
+  async register(email: string, password: string, name: string, major: string, level: string) {
     const userCred = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
-    await this.afs.collection('users').doc(userCred.user.uid).set({
-      email
+    await this.afs.collection('users').doc<User>(userCred.user.uid).set({
+      email,
+      name,
+      major,
+      level,
+      avatar: ''
     });
   }
 

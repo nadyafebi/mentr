@@ -19,6 +19,7 @@ export class LoginPageComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   });
+  loginLoading = false;
 
   constructor(
     private router: Router,
@@ -30,6 +31,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   async login() {
+    this.loginLoading = true;
+
     try {
       const { email, password } = this.loginForm.value;
       await this.userService.login(email, password);
@@ -38,11 +41,12 @@ export class LoginPageComponent implements OnInit {
       console.error(err);
       alert(err);
     }
+
+    this.loginLoading = false;
   }
 
-  async register() {
-    const { email, password } = this.loginForm.value;
-    await this.userService.register(email, password);
+  register() {
+    this.router.navigate(['register']);
   }
 
   signout() {

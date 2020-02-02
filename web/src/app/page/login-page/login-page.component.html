@@ -7,7 +7,7 @@
                 <input
                     formControlName="email" 
                     type="email"
-                    placeholder="petr@uci.edu"
+                    placeholder="peter@uci.edu"
                     matInput
                 >
             </mat-form-field>
@@ -21,12 +21,12 @@
                     matInput
                 >
             </mat-form-field>
+            <div class="form-actions">
+                <mat-checkbox color="primary">Remember me</mat-checkbox>
+                <div class="flex-span"></div>
+                <app-button (action)="login()" [disabled]="loginForm.invalid" [loading]="loginLoading">Login</app-button>
+            </div>
         </form>
-        <div class="form-actions">
-            <mat-checkbox color="primary">Remember me</mat-checkbox>
-            <div class="flex-span"></div>
-            <button (click)="login()" [disabled]="loginForm.invalid" mat-flat-button color="primary">Login</button>
-        </div>
     </mat-card>
 
     <div class="other-actions">
