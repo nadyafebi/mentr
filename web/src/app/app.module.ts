@@ -9,6 +9,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { MaterialModule } from './material';
+import { SwingModule } from 'angular2-swing';
 
 import { environment } from '../environments/environment';
 
@@ -26,6 +27,7 @@ import { MainPageComponent } from './page/main-page/main-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AvatarPipe } from './avatar.pipe';
 import { LandingPageComponent } from './page/landing-page/landing-page.component';
+import { FindMenteePageComponent } from './page/find-mentee-page/find-mentee-page.component';
 
 export function initApp(userService: UserService) {
   return () => {
@@ -45,7 +47,8 @@ export function initApp(userService: UserService) {
     MainPageComponent,
     NavbarComponent,
     AvatarPipe,
-    LandingPageComponent
+    LandingPageComponent,
+    FindMenteePageComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ export function initApp(userService: UserService) {
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    MaterialModule
+    MaterialModule,
+    SwingModule
   ],
   providers: [
     {
