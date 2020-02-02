@@ -1,4 +1,63 @@
+.page-content {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    max-height: 16vh;
+    margin-bottom: 24px;
+}
+
+mat-card {
+    padding: 32px;
+    min-width: 25vw;
+}
+
 form {
     display: flex;
     flex-direction: column;
+}
+
+.form-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.other-actions {
+    margin-top: 24px;
+    color: white;
+    font-size: .875em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    hr {
+        border-style: solid;
+        margin: 24px 0;
+        min-width: 25vw;
+    }
+
+    button {
+        margin-top: 16px;
+        width: fit-content;
+        line-height: 64px;
+        font-size: 1.375em;
+    }
+}
+
+mat-checkbox ::ng-deep .mat-checkbox-label {
+    color: #538186;
+}
+
+mat-checkbox ::ng-deep .mat-checkbox-frame {
+    border-color: #538186;
+}
+
+.join-button {
+    color: #538186;
 }

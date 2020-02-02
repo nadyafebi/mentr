@@ -30,9 +30,14 @@ export class LoginPageComponent implements OnInit {
   }
 
   async login() {
-    const { email, password } = this.loginForm.value;
-    await this.userService.login(email, password);
-    this.router.navigate(['find']);
+    try {
+      const { email, password } = this.loginForm.value;
+      await this.userService.login(email, password);
+      this.router.navigate(['find']);
+    } catch (err) {
+      console.error(err);
+      alert(err);
+    }
   }
 
   async register() {

@@ -31,13 +31,8 @@ export class UserService implements OnDestroy {
   }
 
   async login(email: string, password: string) {
-    try {
-      const userCred = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
-      await this.setUser(userCred.user.uid);
-      return;
-    } catch (err) {
-      console.error(err);
-    }
+    const userCred = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    await this.setUser(userCred.user.uid);
   }
 
   async register(email: string, password: string) {

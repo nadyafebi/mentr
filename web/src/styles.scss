@@ -9,10 +9,43 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+$mentr-primary-palette: (
+    50 : #eaf0f0,
+    100 : #cbd9db,
+    200 : #a9c0c3,
+    300 : #87a7aa,
+    400 : #6d9498,
+    500 : #538186,
+    600 : #4c797e,
+    700 : #426e73,
+    800 : #396469,
+    900 : #295156,
+    A100 : #9ff4ff,
+    A200 : #6ceeff,
+    A400 : #39e8ff,
+    A700 : #1fe5ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$mentr-primary: mat-palette($mat-indigo);
+$mentr-primary: mat-palette($mentr-primary-palette);
 $mentr-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -28,8 +61,14 @@ $mentr-theme: mat-light-theme($mentr-primary, $mentr-accent, $mentr-warn);
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body{ min-height: 100vh; }
+body { 
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: rgb(136,189,188);
+    background: linear-gradient(135deg, rgba(136,189,188,1) 0%, rgba(37,78,88,1) 100%); 
+}
+app-root { height: 100% }
 
 $break-small: 40em;
 $break-large: 64em;
@@ -37,7 +76,7 @@ $break-large: 64em;
 .page {
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    min-height: 100vh;
 
     @media screen and (min-width: $break-small) and (max-width: $break-large) {
         margin: 0 12.5vw;
@@ -46,4 +85,8 @@ $break-large: 64em;
     @media screen and (min-width: $break-large) {
         margin: 0 25vw;
     }
+}
+
+.flex-span {
+    flex: 1 1 auto;
 }
