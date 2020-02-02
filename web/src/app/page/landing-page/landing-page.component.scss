@@ -2,12 +2,26 @@ mat-toolbar {
     background: rgba(0, 0, 0, 0.125) !important;
     color: white !important;
 }
+.hide-text {
+    opacity: 0;
+}
+
+.hide-spinner {
+    opacity: 0;
+}
+
+mat-spinner {
+    position: absolute;
+    top: 6px;
+    margin-left: 4px;
+}
 
 .content {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .gear1 {
@@ -48,9 +62,8 @@ mat-toolbar {
 
 .tagline {
   top: 330px;
-  font-size: 70px;
-  position: absolute;
-  margin: 0;
+  font-size: 75px;
+  margin-top: 200px;
   font-family: Roboto, "Helvetica-Bold", sans-serif;
   color: #ffff;
   text-align: center;
@@ -60,13 +73,17 @@ mat-toolbar {
 .description {
   top                 : 430px;
   width: 800px;
-  position            : absolute;
-  margin              : 0;
+  margin-bottom              : 15px;
   font-family: Roboto, "Helvetica", sans-serif;
   font-size           : 16px;
   color               : #ffffff;
   text-align          : center;
 }
+
+.join-button {
+    color: #538186;
+}
+
 
 @keyframes spin {
   0% {
